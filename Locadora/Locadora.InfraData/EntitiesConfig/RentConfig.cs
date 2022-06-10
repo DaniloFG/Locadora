@@ -12,7 +12,7 @@ namespace Locadora.InfraData.EntitiesConfig
             builder.HasKey(l => l.Id);
 
             builder.Property(l => l.DateWithdrawal)
-                .HasDefaultValue(DateTime.Now)
+                //.HasDefaultValue(DateTime.Now)
                 .IsRequired();
 
             builder.Property(l => l.DateDelivery)
