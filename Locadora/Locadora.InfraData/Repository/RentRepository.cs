@@ -31,7 +31,7 @@ namespace Locadora.InfraData.Repository
             return await _context.Rents.ToListAsync();
         }
 
-        public async Task<Rent> GetByIdAsync(int? id)
+        public async Task<Rent> GetByIdAsync(int id)
         {
             return await _context.Rents.FindAsync(id);
         }

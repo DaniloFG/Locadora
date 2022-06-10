@@ -1,4 +1,5 @@
-﻿using Locadora.Domain.Interfaces;
+﻿using Locadora.Application.Mappings;
+using Locadora.Domain.Interfaces;
 using Locadora.InfraData.Context;
 using Locadora.InfraData.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,8 @@ namespace Locadora.InfraIoC
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddScoped<IRentRepository, RentRepository>();
+
+            services.AddAutoMapper(typeof(DomainToDto));
 
             return services;
         }
