@@ -11,7 +11,7 @@ namespace Locadora.Domain.Interfaces
     {
         Task<ICollection<Rent>> GetAllAsync();
         Task<Rent> GetByIdAsync(int? id);
-        Task<Rent> CreateAsync(Rent client);
-        Task<Rent> UpdateAsync(Rent client);
+        Task<Rent> CreateAsync(Rent rent);
+        Task<Rent> UpdateAsync(Rent rent);
     }
 }
