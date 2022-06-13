@@ -13,37 +13,41 @@ namespace Locadora.Application.Services
 {
     public class RentService : IRentService
     {
-        private readonly IRentRepository _repository;
+        private IClientRepository _repositoryClient;
+        private IFilmRepository _repositoryFilm;
+        private IRentRepository _repositoryRent;
         private readonly IMapper _mapper;
 
-        public RentService(IRentRepository repository, IMapper mapper)
+        public RentService(IClientRepository repositoryClient, IFilmRepository repositoryFilm, IRentRepository repositoryRent, IMapper mapper)
         {
-            _repository = repository;
+            _repositoryClient = repositoryClient;
+            _repositoryFilm = repositoryFilm;
+            _repositoryRent = repositoryRent;
             _mapper = mapper;
         }
 
         public async Task CreateAsync(RentDTO RentDTO)
         {
             var rentEntity = _mapper.Map<Rent>(RentDTO);
-            await _repository.CreateAsync(rentEntity);
+            await _repositoryRent.CreateAsync(rentEntity);
         }
 
         public async Task<IEnumerable<RentDTO>> GetAllAsync()
         {
-            var rentEntity = await _repository.GetAllAsync();
+            var rentEntity = await _repositoryRent.GetAllAsync();
             return _mapper.Map<IEnumerable<RentDTO>>(rentEntity);
         }
 
         public async Task<RentDTO> GetByIdAsync(int id)
         {
-            var rentEntity = await _repository.GetByIdAsync(id);
+            var rentEntity = await _repositoryRent.GetByIdAsync(id);
             return _mapper.Map<RentDTO>(rentEntity);
         }
 
         public async Task UpdateAsync(RentDTO RentDTO)
         {
             var rentEntity = _mapper.Map<Rent>(RentDTO);
-            await _repository.UpdateAsync(rentEntity);
+            await _repositoryRent.UpdateAsync(rentEntity);
         }
     }
 }

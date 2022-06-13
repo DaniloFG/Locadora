@@ -3,14 +3,16 @@ using Locadora.Application.DTOs;
 using Locadora.Application.Interfaces;
 using Locadora.Domain.Entities;
 using Locadora.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Locadora.Application.Services
 {
     public class ClientService : IClientService
     {
-        private readonly IClientRepository _repository;
+        private IClientRepository _repository;
         private readonly IMapper _mapper;
 
         public ClientService(IClientRepository repository, IMapper mapper)
@@ -31,7 +33,7 @@ namespace Locadora.Application.Services
             return _mapper.Map<IEnumerable<ClientDTO>>(clientEntity);
         }
 
-        public async Task<ClientDTO> GetByIdAsync(int? id)
+        public async Task<ClientDTO> GetByIdAsync(int id)
         {
             var clientEntity = await _repository.GetByIdAsync(id);
             return _mapper.Map<ClientDTO>(clientEntity);

@@ -14,8 +14,8 @@ namespace Locadora.Application.DTOs
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Document is required.")]
-        [Range(1, 9999)]
+        [Range(1, 999999999)]
         [DisplayName("Document")]
-        public int Description { get; set; }
+        public int Document { get; set; }
     }
 }

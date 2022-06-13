@@ -8,6 +8,8 @@ namespace Locadora.Application.DTOs
 {
     public class RentDTO
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Date withdrawal is required.")]
         [DisplayName("Date withdrawal")]
         public DateTime DateWithdrawal { get; set; } = DateTime.Now;

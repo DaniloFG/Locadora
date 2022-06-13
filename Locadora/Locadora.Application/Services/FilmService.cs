@@ -13,7 +13,7 @@ namespace Locadora.Application.Services
 {
     public class FilmService : IFilmService
     {
-        private readonly IFilmRepository _repository;
+        private IFilmRepository _repository;
         private readonly IMapper _mapper;
 
         public FilmService(IFilmRepository repository, IMapper mapper)
@@ -34,7 +34,7 @@ namespace Locadora.Application.Services
             return _mapper.Map<IEnumerable<FilmDTO>>(filmEntity);
         }
 
-        public async Task<FilmDTO> GetByIdAsync(int? id)
+        public async Task<FilmDTO> GetByIdAsync(int id)
         {
             var filmEntity = await _repository.GetByIdAsync(id);
             return _mapper.Map<FilmDTO>(filmEntity);
