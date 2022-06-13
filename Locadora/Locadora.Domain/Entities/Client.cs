@@ -13,6 +13,8 @@ namespace Locadora.Domain.Entities
         public Client(string name, int document)
         {
             Validate(name, document);
+
+            Rent = new List<Rent>();
         }
 
         public Client(int id, string name, int document)
@@ -22,6 +24,8 @@ namespace Locadora.Domain.Entities
             Id = id;
             
             Validate(name, document);
+
+            Rent = new List<Rent>();
         }
 
         private void Validate(string name, int document)

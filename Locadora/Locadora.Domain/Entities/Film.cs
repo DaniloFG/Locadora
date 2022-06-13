@@ -14,6 +14,8 @@ namespace Locadora.Domain.Entities
         public Film(string title, int stock)
         {
             Validate(title, stock);
+
+            Rent = new List<Rent>();
         }
 
         public Film(int id, string title, int stock)
@@ -23,6 +25,8 @@ namespace Locadora.Domain.Entities
             Id = id;
 
             Validate(title, stock);
+
+            Rent = new List<Rent>();
         }
 
         private void Validate(string title, int stock)
