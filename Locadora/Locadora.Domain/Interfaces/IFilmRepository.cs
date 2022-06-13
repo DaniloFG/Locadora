@@ -10,7 +10,7 @@ namespace Locadora.Domain.Interfaces
     public interface IFilmRepository
     {
         Task<ICollection<Film>> GetAllAsync();
-        Task<Film> GetByIdAsync(int? id);
+        Task<Film> GetByIdAsync(int id);
         Task<Film> CreateAsync(Film client);
         Task<Film> UpdateAsync(Film client);
     }

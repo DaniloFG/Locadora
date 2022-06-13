@@ -7,7 +7,7 @@ namespace Locadora.Domain.Interfaces
     public interface IClientRepository
     {
         Task<ICollection<Client>> GetAllAsync();
-        Task<Client> GetByIdAsync(int? id);
+        Task<Client> GetByIdAsync(int id);
         Task<Client> CreateAsync(Client client);
         Task<Client> UpdateAsync(Client client);
     }
