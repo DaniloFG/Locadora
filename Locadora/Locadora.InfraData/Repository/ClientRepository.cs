@@ -9,7 +9,7 @@ namespace Locadora.InfraData.Repository
 {
     public class ClientRepository : IClientRepository
     {
-        private readonly AppDbContext _context;
+        private AppDbContext _context;
 
         public ClientRepository(AppDbContext context)
         {
@@ -28,7 +28,7 @@ namespace Locadora.InfraData.Repository
             return await _context.Clients.ToListAsync();
         }
 
-        public async Task<Client> GetByIdAsync(int? id)
+        public async Task<Client> GetByIdAsync(int id)
         {
             return await _context.Clients.FindAsync(id);
         }

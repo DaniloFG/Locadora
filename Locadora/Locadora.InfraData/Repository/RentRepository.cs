@@ -2,17 +2,14 @@
 using Locadora.Domain.Interfaces;
 using Locadora.InfraData.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Locadora.InfraData.Repository
 {
     public class RentRepository : IRentRepository
     {
-        private readonly AppDbContext _context;
+        AppDbContext _context;
 
         public RentRepository(AppDbContext context)
         {

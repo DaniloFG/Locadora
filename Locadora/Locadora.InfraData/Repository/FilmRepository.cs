@@ -12,7 +12,7 @@ namespace Locadora.InfraData.Repository
 {
     public class FilmRepository : IFilmRepository
     {
-        private readonly AppDbContext _context;
+        AppDbContext _context;
 
         public FilmRepository(AppDbContext context)
         {
@@ -31,7 +31,7 @@ namespace Locadora.InfraData.Repository
             return await _context.Films.ToListAsync();
         }
 
-        public async Task<Film> GetByIdAsync(int? id)
+        public async Task<Film> GetByIdAsync(int id)
         {
             return await _context.Films.FindAsync(id);
         }
