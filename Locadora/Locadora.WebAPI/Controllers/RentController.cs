@@ -2,6 +2,7 @@
 using Locadora.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Locadora.WebAPI.Controllers
@@ -58,6 +59,9 @@ namespace Locadora.WebAPI.Controllers
 
             if (RentDTO == null)
                 return BadRequest();
+
+            if (RentDTO.DateDelivery > RentDTO.DateDevolution)
+                Debug.WriteLine("Late delivey");
 
             await _service.UpdateAsync(RentDTO);
 

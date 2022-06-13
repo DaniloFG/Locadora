@@ -5,7 +5,7 @@ namespace Locadora.Domain.Entities
 {
     public sealed class Rent : Entity
     {        
-        public DateTime DateWithdrawal { get; set; } = DateTime.Now;
+        public DateTime DateWithdrawal { get; set; }
         public DateTime DateDevolution { get; set; }
         public DateTime DateDelivery { get; set; }
 
@@ -17,8 +17,8 @@ namespace Locadora.Domain.Entities
 
         public Rent(DateTime dateWithdrawal, DateTime dateDevolution, DateTime dateDelivery)
         {
-            DateWithdrawal = dateWithdrawal;
-            DateDevolution = dateDevolution;
+            DateWithdrawal = dateWithdrawal = DateTime.Now;
+            DateDevolution = dateDevolution = DateTime.Now.AddDays(3);
             DateDelivery = dateDelivery;
         }
 
@@ -27,8 +27,8 @@ namespace Locadora.Domain.Entities
             DomainExceptionValidation.When(id < 0, "Invalid id.");
 
             Id = id;
-            DateWithdrawal = dateWithdrawal;
-            DateDevolution = dateDevolution;
+            DateWithdrawal = dateWithdrawal = DateTime.Now;
+            DateDevolution = dateDevolution = DateTime.Now.AddDays(3);
             DateDelivery = dateDelivery;
         }
     }

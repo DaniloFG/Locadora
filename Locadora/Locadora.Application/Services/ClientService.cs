@@ -23,6 +23,11 @@ namespace Locadora.Application.Services
 
         public async Task CreateAsync(ClientDTO ClientDTO)
         {
+            var clientDocument = await _repository.GetAllAsync();
+
+            if (clientDocument.Any(c => c.Document == ClientDTO.Document))
+                throw new InvalidOperationException("Error, document is alredy exists.");
+
             var clientEntity = _mapper.Map<Client>(ClientDTO);
             await _repository.CreateAsync(clientEntity);
         }

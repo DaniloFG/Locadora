@@ -5,22 +5,18 @@ using Locadora.Domain.Entities;
 using Locadora.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Locadora.Application.Services
 {
     public class RentService : IRentService
     {
-        private IClientRepository _repositoryClient;
         private IFilmRepository _repositoryFilm;
         private IRentRepository _repositoryRent;
         private readonly IMapper _mapper;
 
-        public RentService(IClientRepository repositoryClient, IFilmRepository repositoryFilm, IRentRepository repositoryRent, IMapper mapper)
+        public RentService(IFilmRepository repositoryFilm, IRentRepository repositoryRent, IMapper mapper)
         {
-            _repositoryClient = repositoryClient;
             _repositoryFilm = repositoryFilm;
             _repositoryRent = repositoryRent;
             _mapper = mapper;
@@ -28,6 +24,11 @@ namespace Locadora.Application.Services
 
         public async Task CreateAsync(RentDTO RentDTO)
         {
+            var filmStock = _repositoryFilm.GetByIdAsync(RentDTO.FilmId);
+
+            if (filmStock.Result.Stock <= 0)
+                throw new InvalidOperationException("Error, stock is zero.");
+
             var rentEntity = _mapper.Map<Rent>(RentDTO);
             await _repositoryRent.CreateAsync(rentEntity);
         }

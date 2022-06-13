@@ -12,7 +12,7 @@ namespace Locadora.Application.DTOs
 
         [Required(ErrorMessage = "Date withdrawal is required.")]
         [DisplayName("Date withdrawal")]
-        public DateTime DateWithdrawal { get; set; } = DateTime.Now;
+        public DateTime DateWithdrawal { get; set; }
 
         [Required(ErrorMessage = "Date devolution is required.")]
         [DisplayName("Date devolution")]
