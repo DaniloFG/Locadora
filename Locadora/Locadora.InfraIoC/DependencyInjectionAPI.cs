@@ -1,4 +1,6 @@
-﻿using Locadora.Application.Mappings;
+﻿using Locadora.Application.Interfaces;
+using Locadora.Application.Mappings;
+using Locadora.Application.Services;
 using Locadora.Domain.Interfaces;
 using Locadora.InfraData.Context;
 using Locadora.InfraData.Repository;
@@ -19,6 +21,10 @@ namespace Locadora.InfraIoC
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddScoped<IRentRepository, RentRepository>();
+
+            services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IFilmService, FilmService>();
+            services.AddScoped<IRentService, RentService>();
 
             services.AddAutoMapper(typeof(DomainToDto));
 
